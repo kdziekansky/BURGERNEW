@@ -1,6 +1,3 @@
-// src/services/selectors/index.ts
-
-// Реэкспорт всех селекторов для удобства использования
 import {
   selectIngredients,
   selectIngredientsRequest,

@@ -2,13 +2,11 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
 import { orderBurgerApi } from '../../utils/burger-api';
 
-// Тип для данных заказа, которые приходят с сервера
 type TOrderResponse = {
   order: TOrder;
   name: string;
 };
 
-// Определение типа состояния
 export type TOrderState = {
   orderData: TOrderResponse | null;
   orderRequest: boolean;
@@ -16,7 +14,6 @@ export type TOrderState = {
   error: string | null;
 };
 
-// Начальное состояние
 const initialState: TOrderState = {
   orderData: null,
   orderRequest: false,
@@ -24,7 +21,6 @@ const initialState: TOrderState = {
   error: null
 };
 
-// Создаем асинхронную Thunk-функцию для создания заказа
 export const createOrder = createAsyncThunk(
   'order/createOrder',
   async (ingredientIds: string[], { rejectWithValue }) => {
@@ -40,25 +36,21 @@ export const createOrder = createAsyncThunk(
   }
 );
 
-// Создаем слайс
 export const orderSlice = createSlice({
   name: 'order',
   initialState,
   reducers: {
-    // Сброс данных заказа (например, после закрытия модального окна)
     clearOrder: (state) => {
       state.orderData = null;
     }
   },
   extraReducers: (builder) => {
     builder
-      // При начале запроса
       .addCase(createOrder.pending, (state) => {
         state.orderRequest = true;
         state.orderFailed = false;
         state.error = null;
       })
-      // При успешном запросе
       .addCase(
         createOrder.fulfilled,
         (state, action: PayloadAction<TOrderResponse>) => {
@@ -67,7 +59,6 @@ export const orderSlice = createSlice({
           state.orderData = action.payload;
         }
       )
-      // При ошибке запроса
       .addCase(createOrder.rejected, (state, action) => {
         state.orderRequest = false;
         state.orderFailed = true;
@@ -76,10 +67,8 @@ export const orderSlice = createSlice({
   }
 });
 
-// Экспортируем экшены
 export const { clearOrder } = orderSlice.actions;
 
-// Экспортируем селекторы
 export const selectOrderData = (state: { order: TOrderState }) =>
   state.order.orderData;
 export const selectOrderRequest = (state: { order: TOrderState }) =>
@@ -89,5 +78,4 @@ export const selectOrderFailed = (state: { order: TOrderState }) =>
 export const selectOrderError = (state: { order: TOrderState }) =>
   state.order.error;
 
-// Экспортируем редюсер
 export default orderSlice.reducer;

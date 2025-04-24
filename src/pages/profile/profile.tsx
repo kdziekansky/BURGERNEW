@@ -1,4 +1,3 @@
-// src/pages/profile/profile.tsx
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from '../../services/store';
@@ -64,7 +63,7 @@ export const Profile: FC = () => {
       handleCancel={handleCancel}
       handleSubmit={handleSubmit}
       handleInputChange={handleInputChange}
-      updateUserError={error ?? undefined} // Преобразуем null в undefined
+      updateUserError={error ?? undefined}
     />
   );
 };

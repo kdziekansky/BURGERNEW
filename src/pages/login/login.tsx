@@ -1,5 +1,4 @@
-// src/pages/login/login.tsx
-import { FC, SyntheticEvent, useState, useEffect } from 'react';
+import { FC, SyntheticEvent, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { LoginUI } from '@ui-pages';
 import { useDispatch, useSelector } from '../../services/store';
@@ -16,7 +15,6 @@ export const Login: FC = () => {
   const error = useSelector(selectAuthError);
   const isLoading = useSelector(selectIsLoading);
 
-  // Получаем путь, с которого пользователь был перенаправлен
   const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = (e: SyntheticEvent) => {
@@ -29,7 +27,6 @@ export const Login: FC = () => {
     dispatch(loginUser({ email, password }))
       .unwrap()
       .then(() => {
-        // После успешного логина перенаправляем на предыдущую страницу или на главную
         navigate(from, { replace: true });
       })
       .catch((err) => {

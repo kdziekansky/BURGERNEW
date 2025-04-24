@@ -1,4 +1,3 @@
-// src/pages/register/register.tsx
 import { FC, SyntheticEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RegisterUI } from '@ui-pages';
@@ -27,7 +26,6 @@ export const Register: FC = () => {
     dispatch(registerUser({ name: userName, email, password }))
       .unwrap()
       .then(() => {
-        // После успешной регистрации перенаправляем на главную
         navigate('/', { replace: true });
       })
       .catch((err) => {

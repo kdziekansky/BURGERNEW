@@ -1,5 +1,3 @@
-// src/pages/constructor-page/constructor-page.tsx
-
 import { useSelector, useDispatch } from '../../services/store';
 import { fetchIngredients } from '../../services/slices/ingredients-slice';
 import {
@@ -19,22 +17,12 @@ export const ConstructorPage: FC = () => {
   const isIngredientsLoading = useSelector(selectIngredientsRequest);
   const ingredients = useSelector(selectIngredients);
 
-  // Загружаем ингредиенты при монтировании компонента
   useEffect(() => {
-    console.log('ConstructorPage mounted, loading ingredients if needed');
-
-    // Загружаем только если еще нет ингредиентов
     if (ingredients.length === 0 && !isIngredientsLoading) {
       dispatch(fetchIngredients());
     }
   }, [dispatch, ingredients, isIngredientsLoading]);
 
-  console.log('ConstructorPage render:', {
-    isLoading: isIngredientsLoading,
-    ingredientsCount: ingredients.length
-  });
-
-  // Отображаем загрузку только если загружаемся и еще нет ингредиентов
   const isLoading = isIngredientsLoading && ingredients.length === 0;
 
   return (
