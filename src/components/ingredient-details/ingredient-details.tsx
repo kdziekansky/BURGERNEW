@@ -7,13 +7,8 @@ import { Preloader } from '../ui/preloader';
 import { IngredientDetailsUI } from '../ui/ingredient-details';
 
 export const IngredientDetails: FC = () => {
-  // Получаем id ингредиента из URL
   const { id } = useParams<{ id: string }>();
-
-  // Получаем все ингредиенты из стора
   const ingredients = useSelector(selectIngredients);
-
-  // Находим нужный ингредиент по id
   const ingredientData = ingredients.find((item) => item._id === id);
 
   if (!ingredientData) {

@@ -1,5 +1,3 @@
-// src/components/burger-ingredient/burger-ingredient.tsx
-
 import { FC, memo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from '../../services/store';
@@ -14,7 +12,6 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const dispatch = useDispatch();
 
     const handleAdd = () => {
-      // Если ингредиент - булка, добавляем ее, иначе добавляем как обычный ингредиент
       if (ingredient.type === 'bun') {
         dispatch(addBun(ingredient));
       } else {

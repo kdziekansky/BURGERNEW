@@ -4,7 +4,6 @@ import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
 
 export const OrderInfo: FC = () => {
-  /** TODO: взять переменные orderData и ingredients из стора */
   const orderData = {
     createdAt: '',
     ingredients: [],
@@ -17,7 +16,6 @@ export const OrderInfo: FC = () => {
 
   const ingredients: TIngredient[] = [];
 
-  /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
     if (!orderData || !ingredients.length) return null;
 

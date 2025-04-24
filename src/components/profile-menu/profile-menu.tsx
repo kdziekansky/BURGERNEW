@@ -1,4 +1,3 @@
-// src/components/profile-menu/profile-menu.tsx
 import { FC } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ProfileMenuUI } from '@ui';
@@ -14,11 +13,10 @@ export const ProfileMenu: FC = () => {
     dispatch(logout())
       .unwrap()
       .then(() => {
-        // После успешного выхода перенаправляем на страницу логина
         navigate('/login', { replace: true });
       })
       .catch((err) => {
-        console.error('Ошибка при выходе:', err);
+        console.error('Ошибка при выходе из системы:', err);
       });
   };
 

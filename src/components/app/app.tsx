@@ -6,7 +6,6 @@ import store from '../../services/store';
 import '../../index.css';
 import styles from './app.module.css';
 
-// Главный компонент приложения
 const App: FC = () => (
   <div className={styles.app}>
     <Provider store={store}>

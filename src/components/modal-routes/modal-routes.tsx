@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import { IngredientDetails, OrderInfo, Modal } from '@components';
 import { ProtectedRoute } from '../protected-route';
 
-// Компонент для модальных маршрутов (отображаются поверх основного контента)
 export const ModalRoutes: FC = () => (
   <Routes>
     <Route

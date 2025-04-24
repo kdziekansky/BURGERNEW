@@ -1,18 +1,14 @@
-// src/components/burger-ingredients/burger-ingredients.tsx
-
 import { useState, useRef, useEffect, FC } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { useSelector, useDispatch } from '../../services/store';
+import { useSelector } from '../../services/store';
 import { selectIngredients } from '../../services/selectors';
 
 import { TIngredient, TTabMode } from '@utils-types';
 import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 
 export const BurgerIngredients: FC = () => {
-  // Получаем ингредиенты из стора
   const ingredients = useSelector(selectIngredients);
 
-  // Фильтруем ингредиенты по типам
   const buns: TIngredient[] = ingredients.filter((item) => item.type === 'bun');
   const mains: TIngredient[] = ingredients.filter(
     (item) => item.type === 'main'
@@ -20,13 +16,6 @@ export const BurgerIngredients: FC = () => {
   const sauces: TIngredient[] = ingredients.filter(
     (item) => item.type === 'sauce'
   );
-
-  console.log('BurgerIngredients render:', {
-    ingredients: ingredients.length,
-    buns: buns.length,
-    mains: mains.length,
-    sauces: sauces.length
-  });
 
   const [currentTab, setCurrentTab] = useState<TTabMode>('bun');
   const titleBunRef = useRef<HTMLHeadingElement>(null);
@@ -65,7 +54,6 @@ export const BurgerIngredients: FC = () => {
       titleSaucesRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Если ингредиенты не загружены, возвращаем пустой фрагмент
   if (ingredients.length === 0) {
     return null;
   }
