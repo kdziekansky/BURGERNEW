@@ -1,0 +1,9 @@
+.detailPageWrap {
+  margin: 120px auto;
+  width: fit-content;
+}
+
+.detailHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}

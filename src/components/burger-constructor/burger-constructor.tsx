@@ -54,14 +54,18 @@ export const BurgerConstructor: FC = () => {
       ingredientIds.unshift(constructorItems.bun._id);
     }
 
-    dispatch(createOrder(ingredientIds));
+    dispatch(createOrder(ingredientIds))
+      .unwrap()
+      .then(() => {
+        dispatch(clearConstructor());
+      })
+      .catch((err) => {
+        console.error('Ошибка при создании заказа:', err);
+      });
   };
 
   const closeOrderModal = () => {
     dispatch(clearOrder());
-    if (!orderRequest && orderData) {
-      dispatch(clearConstructor());
-    }
   };
 
   return (
