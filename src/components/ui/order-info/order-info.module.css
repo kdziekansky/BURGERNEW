@@ -2,16 +2,26 @@
   margin: 0 auto;
   width: 640px;
 }
-.number {
-  text-align: center;
-}
 
 .status {
   color: #00cccc;
+  text-align: left;
+  margin-bottom: 15px;
 }
 
 .header {
   margin: 0;
+  text-align: left;
+  margin-bottom: 10px;
+  font-family: 'JetBrains Mono';
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.composition {
+  text-align: left;
+  margin-top: 60px;
+  margin-bottom: 24px;
 }
 
 .img_wrap {
@@ -71,6 +81,7 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .total {
   margin-left: auto;
 }

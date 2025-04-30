@@ -18,7 +18,16 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   min-height: 64px;
+}
+
+.title {
+  font-family: 'Iceland';
+  font-size: 28px;
+  line-height: 36px;
+  color: #F2F2F3;
+  margin: 0;
 }
 
 .button {
